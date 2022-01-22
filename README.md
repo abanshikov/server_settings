@@ -60,10 +60,9 @@ vim ~/.vimrc
 ## ZSH settings
 
 ```bash
-$ sudo apt-get install zsh
-
-$ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
-chsh -s (which zsh)
+$ sudo apt-get install zsh &&
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
+chsh -s $(which zsh)
 
 $ wget -O ~/.zshrc https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
 source ~/.zshrc
