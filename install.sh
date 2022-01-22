@@ -11,8 +11,6 @@ apt-get install zsh vim-gui-common screen speedtest-cli git curl wget unzip zip 
 
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
 
-chsh -s $(which zsh) &&
-
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &&
 
 # Locale and timezone settings
@@ -60,6 +58,8 @@ pip install virtualenv &&
 echo "**********************************************************************" &&
 pyenv versions &&
 python -V &&
-pip -V
+pip -V &&
+
+chsh -s $(which zsh)
 
 

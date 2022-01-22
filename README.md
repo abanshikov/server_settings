@@ -2,8 +2,11 @@
 
 1. Installing
 ```bash
-$ sudo apt-get install wget
-$ sh -c "$(wget https://raw.githubusercontent.com/abanshikov/server_settings/main/install.sh -O -)"
+$ sudo apt-get install wget &&
+wget -O ~/install.sh https://raw.githubusercontent.com/abanshikov/server_settings/main/install.sh &&
+sudo chmod +x ~/install.sh &&
+sudo ~/install.sh
+
 ```
 
 2. Install pluggins for vim
