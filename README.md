@@ -11,14 +11,19 @@ usermod -aG sudo client
 
 
 ## SSH setings
+
+On PC:
+
+```
+$ cat ~/.ssh/keys/id_rsa.pub
+```
+Copy output string.
+
+On server:
+
 ```bash
-# mkdir -p /home/client/.ssh &&
-echo INSERT_YOUR_PUBLIC_KEY >> /home/client/.ssh/authorized_keys &&
-chmod -R go= /home/client/.ssh &&
-chown -R client:client /home/client/.ssh
-systemctl start sshd &&
-sudo systemctl enable sshd &&
-sudo /etc/init.d/ssh restart
+# mkdir -p /home/client/.ssh && echo INSERT_YOUR_PUBLIC_KEY >> /home/client/.ssh/authorized_keys && chmod -R go= /home/client/.ssh && chown -R client:client /home/client/.ssh
+# systemctl start sshd && systemctl enable sshd && /etc/init.d/ssh restart
 ```
 
 Connect via ssh and make further configuration from under the user.
@@ -31,16 +36,13 @@ $ sudo apt-get update &&
 sudo apt-get upgrade -y &&
 sudo apt autoclean -y &&
 sudo apt autoremove -y &&
-sudo apt-get install zsh vim-gui-common screen speedtest-cli git curl wget unzip zip ncdu htop mc ranger ncdu fail2ban libpcre3 libpcre3-dev &&
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
-chsh -s $(which zsh) &&
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &&
+sudo apt-get install vim-gui-common screen speedtest-cli git curl wget unzip zip ncdu htop mc ranger ncdu fail2ban libpcre3 libpcre3-dev &&
 sudo locale-gen ru_RU.UTF-8 &&
 sudo update-locale LANG=en_US.UTF-8 LC_TIME="ru_RU.UTF-8" &&
 sudo timedatectl set-timezone Asia/Novosibirsk &&
 sudo ufw status &&
 sudo ufw allow OpenSSH &&
-sudo ufw allow 18181/tcp &&
+sudo ufw allow 22/tcp &&
 sudo ufw enable &&
 sudo ufw status
 ```
@@ -58,14 +60,13 @@ vim ~/.vimrc
 ## ZSH settings
 
 ```bash
+$ sudo apt-get install zsh
+
 $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
-echo "ZSH_THEME=\"agnoster\"" >> ~/.zshrc &&
-echo " " >> ~/.zshrc &&
-wget -O ~/.zshrcbak https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
-cat ~/.zshrcbak >> ~/.zshrc &&
-rm ~/.zshrcbak &&
-source ~/.zshrc &&
 chsh -s (which zsh)
+
+$ wget -O ~/.zshrc https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
+source ~/.zshrc
 ```
 
 ## Python 3.9.7
