@@ -19,6 +19,15 @@ ufw allow OpenSSH &&
 ufw allow 18181/tcp &&
 ufw enable &&
 
+# Zsh settings
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
+echo "ZSH_THEME=\"agnoster\"" >> ~/.zshrc &&
+echo " " >> ~/.zshrc &&
+wget -O ~/.zshrcbak https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
+cat ~/.zshrcbak >> ~/.zshrc &&
+rm ~/.zshrcbak &&
+chsh -s $(which zsh) &&
+
 # Vim settings
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 wget -O ~/.vimrc https://raw.githubusercontent.com/abanshikov/server_settings/main/vimrc
@@ -47,13 +56,6 @@ pyenv versions &&
 python -V &&
 pip -V &&
 
-# Zsh settings
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
-echo "ZSH_THEME=\"agnoster\"" >> ~/.zshrc &&
-echo " " >> ~/.zshrc &&
-wget -O ~/.zshrcbak https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
-cat ~/.zshrcbak >> ~/.zshrc &&
-rm ~/.zshrcbak &&
-chsh -s $(which zsh)
+
 
 
