@@ -7,7 +7,7 @@ apt autoclean -y &&
 apt autoremove -y &&
 
 # Installing programs and features
-apt-get install zsh vim-gui-common screen speedtest-cli git curl wget unzip zip ncdu htop mc ranger ncdu fail2ban libpcre3 libpcre3-dev ufw &&
+# apt-get install zsh vim-gui-common screen speedtest-cli git curl wget unzip zip ncdu htop mc ranger ncdu fail2ban libpcre3 libpcre3-dev ufw &&
 
 # Locale and timezone settings
 locale-gen ru_RU.UTF-8 &&
