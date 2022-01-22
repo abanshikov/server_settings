@@ -29,7 +29,6 @@ wget -O ~/.vimrc https://raw.githubusercontent.com/abanshikov/server_settings/ma
 
 # Zsh settings
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" &&
-chsh -s (which zsh) &&
 echo "ZSH_THEME=\"agnoster\"" >> ~/.zshrc &&
 echo " " >> ~/.zshrc &&
 wget -O ~/.zshrcbak https://raw.githubusercontent.com/abanshikov/server_settings/main/zshrc &&
