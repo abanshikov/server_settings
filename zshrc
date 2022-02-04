@@ -36,3 +36,14 @@ prompt_end() {
 export PATH=$PATH:$HOME/bin
 # default editor
 export EDITOR=vim
+# github push
+gitall() {
+    git add .
+    if [ "$1" != "" ] # or better, if [ -n "$1" ]
+    then
+        git commit -m "$1"
+    else
+        git commit -m update
+    fi
+    git push
+}
