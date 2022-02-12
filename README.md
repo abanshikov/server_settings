@@ -68,7 +68,7 @@ $ wget -O ~/.zshrc https://raw.githubusercontent.com/abanshikov/server_settings/
 source ~/.zshrc
 ```
 
-## Python 3.9.7
+## Python 3.10
 ```bash
 $ sudo apt-get update; sudo apt-get install --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev build-essential libssl-dev libffi-dev &&
 sudo apt-get install git &&
@@ -85,8 +85,8 @@ echo "alias venv=\"virtualenv venv && source venv/bin/activate\"" >> ~/.zshrc &&
 echo "alias sv=\"source venv/bin/activate\"" >> ~/.zshrc &&
 echo "alias dv=\"deactivate\"" >> ~/.zshrc &&
 source ~/.zshrc &&
-pyenv install 3.9.7 &&
-pyenv global 3.9.7 &&
+pyenv install 3.10-dev &&
+pyenv global 3.10-dev &&
 pip install -U pip &&
 pip install virtualenv &&
 echo "****************************************************************************************************************" &&
