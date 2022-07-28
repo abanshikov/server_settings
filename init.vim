@@ -18,6 +18,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'L3MON4D3/LuaSnip'
+  " Поиск по названию и содержимому файла
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 colorscheme gruvbox             " Выбор темы
@@ -43,12 +47,17 @@ set relativenumber              " Относительные номера стр
 set scrolloff=8                 " Количество показываемых внизу строк при скролинге
 set shiftwidth:4                " Величина отступов (табов)
 set showcmd                     " Показывать незавершённые команды в статусбаре
-set showtabline=0               " Отображение символа отступов (табов)
+set showtabline=1               " Отображение строки с названиями вкладок
 set smarttab                    " Настройки отступов (табов)
 set softtabstop=4               " Величина отступов (табов)
 set tabstop:4                   " Величина отступов (табов)
 set termencoding=utf-8          " Кодировка терминала
 set wrap                        " Перенос на другую строку
+
+" Настройка вкладок
+let g:netrw_banner = 0          " Скрывать заголовок при открытии каталога
+let g:netrw_liststyle = 3       " Открывать в виде дерева
+let g:netrw_browse_split = 3    " Открывать в новой вкладке по enter'y
 
 " Вставить текст из буфера обмена Ctrl+v
 imap <C-v> <C-r><C-o>+
@@ -67,7 +76,7 @@ nnoremap <c-z> :u<CR>
 
 " Выход из режима ввода текста
 inoremap jj <Esc>
-inoremap оо <Esc>
+" inoremap оо <Esc>
 
 " Запуск NERDTree (дерева каталогов) Ctrl+b
 map <C-b> :NERDTreeToggle<CR>
@@ -97,6 +106,10 @@ vnoremap <c-s> <Esc>:w<CR>
 " Вырезать выделенный фрагмент Ctrl+x
 vmap <C-x> "+c
 
+" Поиск и открытие файлов по названию и по содержанию
+nnoremap ff <cmd>Telescope find_files<cr>
+nnoremap fg <cmd>Telescope live_grep<cr>
+
 
 let python_highlight_all = 1    " Подсветка для python
 let &t_SI = "\<Esc>[6 q"        " Настройка индикатора курсора (для kitty)
@@ -118,9 +131,10 @@ vim.o.completeopt = 'menuone,noselect'
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 cmp.setup {
-  completion = {
-    autocomplete = true -- Автоматическое отображение автодополнения
-  },
+-- Раскомментировать для отключения автоматического автодополнения
+--  completion = {
+--    autocomplete = true 
+--  },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
@@ -200,6 +214,12 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+EOF
+
+
+" Поиск по содержимому файла
+lua << EOF
+require('telescope').load_extension('fzf')
 EOF
 
 
