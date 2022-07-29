@@ -108,8 +108,8 @@ vnoremap <c-s> <Esc>:w<CR>
 vmap <C-x> "+c
 
 " Поиск и открытие файлов по названию и по содержанию
-nnoremap ff <cmd>Telescope find_files<cr>
-nnoremap fg <cmd>Telescope live_grep<cr>
+nnoremap ,f <cmd>Telescope find_files<cr>
+nnoremap ,g <cmd>Telescope live_grep<cr>
 
 
 let python_highlight_all = 1    " Подсветка для python
