@@ -1,5 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
+# ZSH_THEME="bira"
+# ZSH_THEME="strug"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
@@ -13,7 +16,7 @@ alias sv='source venv/bin/activate'
 alias dv='deactivate'
 alias bcopy='xclip -sel clip'
 alias bpaste='xclip -sel clip -o'
-alias vi='gvim'
+alias vi='nvim'
 # new line
 prompt_end() {
     if [[ -n $CURRENT_BG ]]; then
