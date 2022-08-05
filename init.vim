@@ -1,31 +1,52 @@
 call plug#begin('~/.vim/plugged')
-  " Темы
-  Plug 'morhetz/gruvbox'
-  Plug 'mhartington/oceanic-next'  " colorscheme OceanicNext
-  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-  Plug 'ayu-theme/ayu-vim'
-  " Дерево каталогов
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-  " Умная расстановка скобок
-  Plug 'chun-yang/auto-pairs'
-  " Поиск по букве в файле
-  Plug 'easymotion/vim-easymotion'
-  " Коммандная строка
-  Plug 'vim-airline/vim-airline'
-  " Автодополнение и обозначение ошибок линтера
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'saadparwaiz1/cmp_luasnip'
-  Plug 'L3MON4D3/LuaSnip'
-  Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-  " Поиск по названию и содержимому файла
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    " https://vimawesome.com/
+    " Темы
+    Plug 'morhetz/gruvbox'
+    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    " Дерево каталогов
+    Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+    " Коммандная строка
+    Plug 'vim-airline/vim-airline'
+    " Умная расстановка скобок
+    Plug 'chun-yang/auto-pairs'
+    " Оборачивание скобками, кавычками https://vimawesome.com/plugin/surround-vim
+    Plug 'tpope/vim-surround'
+    " Комментирование/раскомментирование строк https://vimawesome.com/plugin/commentary-vim
+    Plug 'tpope/vim-commentary'
+    " Иконки https://vimawesome.com/plugin/vim-devicons
+    Plug 'ryanoasis/vim-devicons'
+    " Автозаполнение emmet https://vimawesome.com/plugin/emmet-vim 
+    Plug 'mattn/emmet-vim'
+    " Поиск по букве в файле
+    Plug 'easymotion/vim-easymotion'
+    " Автодополнение и обозначение ошибок линтера
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+    " Сниппеты
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'L3MON4D3/LuaSnip'
+    " Поиск по названию и содержимому файла
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
-colorscheme gruvbox             " Выбор темы
+" Настройка цветов
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+" Выбор темы
+" colorscheme gruvbox             
+colorscheme material
+" 'default', 'palenight', 'ocean', 'lighter', 'darker', 'default-community', 'palenight-community', 'ocean-community', 'lighter-community', 'darker-community'
+let g:material_theme_style = 'darker-community'
+" let g:material_theme_style = 'darker'
+let g:material_terminal_italics = 1
+let g:airline_theme = 'material'
+
 filetype indent on              " Загружать файлы отступов для конкретных типов файлов
 syntax on                       " Подсветка синтаксиса
 
@@ -35,6 +56,7 @@ set colorcolumn=80              " Количество символов до в�
 set encoding=utf-8              " Кодировка файлов
 set expandtab                   " Настройки отступов (табов)
 set fileformat=unix             " Формат файлов по умолчанию
+set foldmethod=indent           " Сворачивание кода zo-развернуть, zm-свернуть https://vim.fandom.com/wiki/Folding
 set hlsearch                    " Подсветка поиска
 set incsearch                   " Подсветка поиска
 set linebreak                   " Разрыв строки
@@ -55,10 +77,27 @@ set tabstop:4                   " Величина отступов (табов)
 set termencoding=utf-8          " Кодировка терминала
 set wrap                        " Перенос на другую строку
 
+" Настройка информационной строки
+let g:airline_powerline_fonts = 1             " Шрифт иконок nerd
+let g:airline#extensions#tabline#enabled = 1  " Отображение названий вкладок
+
+" Автодополнение emmet 
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" Стандартное сочетание <Ctrl+y> затем нажать <,>. Переоприделить <Tab>+<,>
+" let g:user_emmet_leader_key='<Tab>'
+
 " Настройка вкладок
 let g:netrw_banner = 0          " Скрывать заголовок при открытии каталога
 let g:netrw_liststyle = 3       " Открывать в виде дерева
 let g:netrw_browse_split = 3    " Открывать в новой вкладке по enter'y
+
+" Комментировать python
+vnoremap <silent> <C-/> :s/^/# /<cr>:noh<cr>
+vnoremap <silent> <C-S-/> :s/^# //<cr>:noh<cr>
 
 " Вставить текст из буфера обмена Ctrl+v
 imap <C-v> <C-r><C-o>+
@@ -79,8 +118,15 @@ nnoremap <c-z> :u<CR>
 inoremap jj <Esc>
 " inoremap оо <Esc>
 
-" Запуск NERDTree (дерева каталогов) Ctrl+b
+" Запуск и настройки NERDTree (дерева каталогов) Ctrl+b
+" https://github.com/preservim/nerdtree
 map <C-b> :NERDTreeToggle<CR>
+" открыть файл в новой вкладке
+let NERDTreeCustomOpenArgs={'file':{'where': 't'}}  
+" Выйдите из Vim, если NERDTree — единственное окно, оставшееся на единственной вкладке.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Закройте вкладку, если в ней осталось только окно NERDTree.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Быстрый переход к тексту
 map <Leader> <Plug>(easymotion-prefix)
@@ -312,6 +358,15 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
+" Переход между буферами
 map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
+
+
+" Настройка цветов сообщений об ошибках
+set termguicolors
+hi DiagnosticError guifg=#ff5252
+hi DiagnosticWarn  guifg=#ffc400
+hi DiagnosticInfo  guifg=#9e9e9e
+hi DiagnosticHint  guifg=#424242
