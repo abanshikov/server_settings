@@ -10,6 +10,8 @@
         Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
         " Коммандная строка https://github.com/vim-airline/vim-airline
         Plug 'vim-airline/vim-airline'
+        " Визуальное отображение маркеров https://github.com/kshenoy/vim-signature
+        Plug 'kshenoy/vim-signature'
         " Расстановка скобок https://github.com/chun-yang/auto-pairs
         Plug 'chun-yang/auto-pairs'
         " Оборачивание скобками, кавычками https://github.com/tpope/vim-surround
@@ -417,7 +419,6 @@ EOF
     " Move to line
     map <Leader>/ <Plug>(easymotion-bd-jk)
     nmap <Leader>/ <Plug>(easymotion-overwin-line)
-
 
 
 
