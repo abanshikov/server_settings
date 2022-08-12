@@ -11,7 +11,7 @@
         " Коммандная строка https://github.com/vim-airline/vim-airline
         Plug 'vim-airline/vim-airline'
         " Визуальное отображение маркеров https://github.com/kshenoy/vim-signature
-        Plug 'kshenoy/vim-signature'
+        " Plug 'kshenoy/vim-signature'
         " Расстановка скобок https://github.com/chun-yang/auto-pairs
         Plug 'chun-yang/auto-pairs'
         " Оборачивание скобками, кавычками https://github.com/tpope/vim-surround
@@ -137,6 +137,11 @@
     " Переименовать переменную https://ask-dev.ru/info/15871/changing-variable-names-in-vim
     nnoremap <F2> gD:%s/<C-R>///gc<left><left><left>
     nnoremap <S-F2> :%s/<C-R>///gc<left><left><left>
+    " Для отступов по '>' '<' аналогично TAB
+    vmap <<> <gv
+    vmap <>> >gv
+    vnoremap <<> <gv
+    vnoremap <>> >gv
 
 
 " =============================================================================
