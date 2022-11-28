@@ -17,6 +17,7 @@ alias dv='deactivate'
 alias bcopy='xclip -sel clip'
 alias bpaste='xclip -sel clip -o'
 alias vi='nvim'
+source ~/bin/remind
 # new line
 prompt_end() {
     if [[ -n $CURRENT_BG ]]; then
