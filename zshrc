@@ -6,9 +6,12 @@ ZSH_THEME="agnoster"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+alias ls="exa"
+alias ll="exa -alF"
+alias tree="exa --tree -I 'venv*|__pycache__'"
 alias my_ip='wget -qO- eth0.me'
 alias uu='sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y'
 alias venv='virtualenv venv && source venv/bin/activate'
