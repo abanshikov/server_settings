@@ -11,7 +11,7 @@ source $ZSH/oh-my-zsh.sh
 # alias l='ls -CF'
 alias ls="exa"
 alias la="exa -a"
-alias ll="exa -alF"
+alias ll="exa -alh"
 alias tree="exa --tree -I 'venv*|__pycache__'"
 alias my_ip='wget -qO- eth0.me'
 alias uu='sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y'
