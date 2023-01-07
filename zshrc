@@ -10,6 +10,7 @@ source $ZSH/oh-my-zsh.sh
 # alias la='ls -A'
 # alias l='ls -CF'
 alias ls="exa"
+alias la="exa -a"
 alias ll="exa -alF"
 alias tree="exa --tree -I 'venv*|__pycache__'"
 alias my_ip='wget -qO- eth0.me'
